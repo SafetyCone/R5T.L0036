@@ -1,13 +1,14 @@
 using System;
+using System.Threading.Tasks;
 
 
 namespace R5T.L0036.Construction
 {
     class Program
     {
-        static void Main()
+        static async Task Main()
         {
-            Console.WriteLine("Hello World!");
+            await Experiments.Instance.TestRepositoryExists();
         }
     }
 }
