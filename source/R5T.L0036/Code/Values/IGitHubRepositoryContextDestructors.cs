@@ -10,5 +10,8 @@ namespace R5T.L0036
     {
         public Action<IGitHubRepositoryContext> Default => 
             context => Instances.ActionOperations.DoNothing(context);
+
+        public Action<N001.IGitHubRepositoryContext> Default_N001 =>
+            context => Instances.ActionOperations.DoNothing(context);
     }
 }

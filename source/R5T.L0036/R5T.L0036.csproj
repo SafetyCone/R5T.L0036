@@ -17,8 +17,7 @@
     <ProjectReference Include="..\..\..\R5T.T0137\source\R5T.T0137\R5T.T0137.csproj" />
     <ProjectReference Include="..\..\..\R5T.L0034\source\R5T.L0034\R5T.L0034.csproj" />
     <ProjectReference Include="..\..\..\R5T.L0031\source\R5T.L0031\R5T.L0031.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Code\Contexts\Implementations\" />
+    <ProjectReference Include="..\..\..\R5T.T0159\source\R5T.T0159\R5T.T0159.csproj" />
+    <ProjectReference Include="..\..\..\R5T.T0186\source\R5T.T0186\R5T.T0186.csproj" />
   </ItemGroup>
 </Project>
