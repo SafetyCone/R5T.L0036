@@ -9,9 +9,9 @@ namespace R5T.L0036
     public partial interface IGitHubRepositoryContextDestructors : IValuesMarker
     {
         public Action<IGitHubRepositoryContext> Default => 
-            context => Instances.ActionOperations.DoNothing(context);
+            context => Instances.ActionOperations.DoNothing_Synchronous(context);
 
         public Action<N001.IGitHubRepositoryContext> Default_N001 =>
-            context => Instances.ActionOperations.DoNothing(context);
+            context => Instances.ActionOperations.DoNothing_Synchronous(context);
     }
 }
