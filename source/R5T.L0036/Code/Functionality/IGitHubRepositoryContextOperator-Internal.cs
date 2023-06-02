@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using R5T.T0132;
 using R5T.T0184;
 
+using R5T.L0036.T000;
+
 
 namespace R5T.L0036.Internal
 {
@@ -11,8 +13,8 @@ namespace R5T.L0036.Internal
     public partial interface IGitHubRepositoryContextOperator : IFunctionalityMarker
     {
         public async Task Check_RepositoryExists(
-            N001.IGitHubRepositoryContext context,
-            Action<N001.IGitHubRepositoryContext, bool> outputConsumer)
+            T000.N001.IGitHubRepositoryContext context,
+            Action<T000.N001.IGitHubRepositoryContext, bool> outputConsumer)
         {
             var exists = await Instances.GitHubOperator.RepositoryExists(
                 context.OwnerName.Value,
@@ -21,9 +23,9 @@ namespace R5T.L0036.Internal
             outputConsumer(context, exists);
         }
 
-        public async Task Clone_Repository_ProvideContext(
-            N001.IGitHubRepositoryContext context,
-            Action<N001.IGitHubRepositoryContext, string> outputConsumer)
+        public async Task Clone_Repository(
+            T000.N001.IGitHubRepositoryContext context,
+            Action<T000.N001.IGitHubRepositoryContext, string> outputConsumer)
         {
             var localDirectoryPath = await Instances.GitOperator.Clone_NonIdempotent(
                 context.RepositoryName.Value,
@@ -33,7 +35,7 @@ namespace R5T.L0036.Internal
         }
 
         public async Task Clone_Repository(
-            N001.IGitHubRepositoryContext context,
+            T000.N001.IGitHubRepositoryContext context,
             Action<string> outputConsumer)
         {
             var localDirectoryPath = await Instances.GitOperator.Clone_NonIdempotent(
@@ -44,7 +46,7 @@ namespace R5T.L0036.Internal
         }
 
         public async Task Create_RemoteRepository(
-            N001.IGitHubRepositoryContext context,
+            T000.N001.IGitHubRepositoryContext context,
             IRepositoryDescription description)
         {
             var repositorySpecification = new F0041.GitHubRepositorySpecification
@@ -62,7 +64,7 @@ namespace R5T.L0036.Internal
         }
 
         /// <inheritdoc cref="F0041.IGitHubOperator.DeleteRepository(string, string)"/>
-        public async Task Delete_Repository(N001.IGitHubRepositoryContext context)
+        public async Task Delete_Repository(T000.N001.IGitHubRepositoryContext context)
         {
             await Instances.GitHubOperator.DeleteRepository(
                 context.OwnerName.Value,
@@ -80,7 +82,7 @@ namespace R5T.L0036.Internal
             }
         }
 
-        public async Task Verify_RepositoryDoesNotExist(N001.IGitHubRepositoryContext context)
+        public async Task Verify_RepositoryDoesNotExist(T000.N001.IGitHubRepositoryContext context)
         {
             var exists = await Instances.GitHubOperator.RepositoryExists(
                 context.OwnerName.Value,

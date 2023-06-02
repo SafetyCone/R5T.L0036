@@ -5,7 +5,7 @@ using R5T.T0159;
 using R5T.T0186;
 
 
-namespace R5T.L0036.N001
+namespace R5T.L0036.T000.N001
 {
     /// <summary>
     /// Repository name and owner name based.

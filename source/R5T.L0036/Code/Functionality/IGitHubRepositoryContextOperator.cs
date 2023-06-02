@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 using R5T.T0132;
 using R5T.T0159;
 using R5T.T0186;
+using R5T.T0198;
+
+using R5T.L0036.T000;
 
 
 namespace R5T.L0036
@@ -42,15 +45,15 @@ namespace R5T.L0036
             IGitHubRepositoryName repositoryName,
             IGitHubRepositoryOwnerName ownerName,
             ITextOutput textOutput,
-            params Func<N001.IGitHubRepositoryContext, Task>[] operations)
+            params Func<T000.N001.IGitHubRepositoryContext, Task>[] operations)
         {
             return Instances.ContextOperator.In_Context(
-                Instances.GitHubRepositoryContextConstructors.Default_N001(
+                Instances.GitHubRepositoryContextConstructors.Default(
                     repositoryName,
                     ownerName,
                     textOutput),
                 operations,
-                Instances.GitHubRepositoryContextDestructors.Default_N001);
+                Instances.GitHubRepositoryContextDestructors.Default);
         }
     }
 }

@@ -13,6 +13,5 @@ namespace R5T.L0036
         public static IGitHubRepositoryContextOperator GitHubRepositoryContextOperator => L0036.GitHubRepositoryContextOperator.Instance;
         public static Internal.IGitHubRepositoryContextOperator GitHubRepositoryContextOperator_Internal => Internal.GitHubRepositoryContextOperator.Instance;
         public static F0041.IGitOperator GitOperator => F0041.GitOperator.Instance;
-        public static IStringOperator StringOperator => L0036.StringOperator.Instance;
     }
 }

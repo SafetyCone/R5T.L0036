@@ -2,16 +2,16 @@ using System;
 
 using R5T.T0131;
 
+using R5T.L0036.T000;
+
 
 namespace R5T.L0036
 {
     [ValuesMarker]
     public partial interface IGitHubRepositoryContextDestructors : IValuesMarker
     {
-        public Action<IGitHubRepositoryContext> Default => 
-            context => Instances.ActionOperations.DoNothing_Synchronous(context);
+        public void Default(IGitHubRepositoryContext gitHubRepositoryContext) => Instances.ActionOperations.DoNothing_Synchronous(gitHubRepositoryContext);
 
-        public Action<N001.IGitHubRepositoryContext> Default_N001 =>
-            context => Instances.ActionOperations.DoNothing_Synchronous(context);
+        public void Default(T000.N001.IGitHubRepositoryContext gitHubRepositoryContext) => Instances.ActionOperations.DoNothing_Synchronous(gitHubRepositoryContext);
     }
 }
