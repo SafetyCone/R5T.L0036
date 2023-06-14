@@ -21,7 +21,7 @@ namespace R5T.L0036
         }
         
         public Func<T000.N001.IGitHubRepositoryContext, Task> Clone_Repository(
-            Action<T000.N001.IGitHubRepositoryContext, string> outputConsumer)
+            Action<T000.N001.IGitHubRepositoryContext, string> outputConsumer = default)
         {
             return context => Instances.GitHubRepositoryContextOperator_Internal.Clone_Repository(
                 context,
@@ -29,7 +29,7 @@ namespace R5T.L0036
         }
 
         public Func<T000.N001.IGitHubRepositoryContext, Task> Clone_Repository(
-            Action<string> outputConsumer)
+            Action<string> outputConsumer = default)
         {
             return context => Instances.GitHubRepositoryContextOperator_Internal.Clone_Repository(
                 context,
@@ -48,10 +48,14 @@ namespace R5T.L0036
         public Func<T000.N001.IGitHubRepositoryContext, Task> Delete_Repository =>
             context => Instances.GitHubRepositoryContextOperator_Internal.Delete_Repository(context);
 
-        public Func<IGitHubRepositoryContext, Task> Verify_RepositoryDoesNotExist =>
-            context => Instances.GitHubRepositoryContextOperator_Internal.Verify_RepositoryDoesNotExist(context);
+        public Task Verify_RepositoryDoesNotExist(IGitHubRepositoryContext context)
+        {
+            return Instances.GitHubRepositoryContextOperator_Internal.Verify_RepositoryDoesNotExist(context);
+        }
 
-        public Func<T000.N001.IGitHubRepositoryContext, Task> Verify_RepositoryDoesNotExist_N001 =>
-            context => Instances.GitHubRepositoryContextOperator_Internal.Verify_RepositoryDoesNotExist(context);
+        public Task Verify_RepositoryDoesNotExist(T000.N001.IGitHubRepositoryContext context)
+        {
+            return Instances.GitHubRepositoryContextOperator_Internal.Verify_RepositoryDoesNotExist(context);
+        }
     }
 }

@@ -31,7 +31,10 @@ namespace R5T.L0036.Internal
                 context.RepositoryName.Value,
                 context.OwnerName.Value);
 
-            outputConsumer(context, localDirectoryPath);
+            Instances.ActionOperator.Run(
+                outputConsumer,
+                context,
+                localDirectoryPath);
         }
 
         public async Task Clone_Repository(
@@ -59,7 +62,7 @@ namespace R5T.L0036.Internal
                 Visibility = F0041.GitHubRepositoryVisibility.Public,
             };
 
-            var exists = await Instances.GitHubOperator.CreateRepository(
+            await Instances.GitHubOperator.CreateRepository(
                 repositorySpecification);
         }
 
