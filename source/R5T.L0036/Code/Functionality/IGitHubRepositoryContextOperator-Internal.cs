@@ -66,6 +66,27 @@ namespace R5T.L0036.Internal
                 repositorySpecification);
         }
 
+        public async Task Create_RemoteRepository(
+            T000.N001.IGitHubRepositoryContext context,
+            IRepositoryDescription description,
+            bool isPrivate)
+        {
+            var visibility = Instances.GitHubRepositoryVisibilityOperator.Get_GitHubRepositoryVisibility(isPrivate);
+
+            var repositorySpecification = new F0041.GitHubRepositorySpecification
+            {
+                Description = description.Value,
+                InitializeWithReadMe = true,
+                License = F0041.GitHubRepositoryLicense.MIT,
+                Name = context.RepositoryName.Value,
+                Organization = context.OwnerName.Value,
+                Visibility = visibility
+            };
+
+            await Instances.GitHubOperator.CreateRepository(
+                repositorySpecification);
+        }
+
         /// <inheritdoc cref="F0041.IGitHubOperator.DeleteRepository(string, string)"/>
         public async Task Delete_Repository(T000.N001.IGitHubRepositoryContext context)
         {
