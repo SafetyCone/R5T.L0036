@@ -20,6 +20,7 @@ namespace R5T.L0036.Construction
             /// Run.
             await Instances.GitHubRepositoryContextOperator.In_GitHubRepositoryContext(
                 gitHubRepositoryUrl,
+                Instances.TextOutputOperator.FromLogger(Microsoft.Extensions.Logging.Abstractions.NullLogger.Instance),
                 Instances.GitHubRepositoryContextOperations.Verify_RepositoryDoesNotExist);
         }
     }
