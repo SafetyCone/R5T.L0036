@@ -23,10 +23,20 @@ namespace R5T.L0036.Internal
             outputConsumer(context, exists);
         }
 
+        public Task Clone_Repository(
+            T000.N001.IGitHubRepositoryContext context)
+        {
+            return this.Clone_Repository(
+                context,
+                Instances.ActionOperations.DoNothing_Synchronous);
+        }
+
         public async Task Clone_Repository(
             T000.N001.IGitHubRepositoryContext context,
-            Action<T000.N001.IGitHubRepositoryContext, string> outputConsumer)
+            Action<T000.N001.IGitHubRepositoryContext, string> outputConsumer = default)
         {
+            context.TextOutput.WriteInformation("Cloning GitHub repository to local Git repository...");
+
             var localDirectoryPath = await Instances.GitOperator.Clone_NonIdempotent(
                 context.RepositoryName.Value,
                 context.OwnerName.Value);
@@ -39,13 +49,15 @@ namespace R5T.L0036.Internal
 
         public async Task Clone_Repository(
             T000.N001.IGitHubRepositoryContext context,
-            Action<string> outputConsumer)
+            Action<string> outputConsumer = default)
         {
             var localDirectoryPath = await Instances.GitOperator.Clone_NonIdempotent(
                 context.RepositoryName.Value,
                 context.OwnerName.Value);
 
-            outputConsumer(localDirectoryPath);
+            Instances.ActionOperator.Run(
+                outputConsumer,
+                localDirectoryPath);
         }
 
         public async Task Create_RemoteRepository(
@@ -71,6 +83,8 @@ namespace R5T.L0036.Internal
             IRepositoryDescription description,
             bool isPrivate)
         {
+            context.TextOutput.WriteInformation("Creating remote GitHub repository...");
+
             var visibility = Instances.GitHubRepositoryVisibilityOperator.Get_GitHubRepositoryVisibility(isPrivate);
 
             var repositorySpecification = new F0041.GitHubRepositorySpecification
@@ -90,6 +104,8 @@ namespace R5T.L0036.Internal
         /// <inheritdoc cref="F0041.IGitHubOperator.DeleteRepository(string, string)"/>
         public async Task Delete_Repository(T000.N001.IGitHubRepositoryContext context)
         {
+            context.TextOutput.WriteInformation("Deleting remote GitHub repository...");
+
             await Instances.GitHubOperator.DeleteRepository(
                 context.OwnerName.Value,
                 context.RepositoryName.Value);

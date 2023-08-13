@@ -23,8 +23,7 @@ namespace R5T.L0036
         public Func<T000.N001.IGitHubRepositoryContext, Task> Clone_Repository()
         {
             return context => Instances.GitHubRepositoryContextOperator_Internal.Clone_Repository(
-                context,
-                Instances.ActionOperations.DoNothing_Synchronous<string>);
+                context);
         }
 
         public Func<T000.N001.IGitHubRepositoryContext, Task> Clone_Repository(
