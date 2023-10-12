@@ -42,9 +42,9 @@ namespace R5T.L0036.Internal
                 context.OwnerName.Value);
 
             Instances.ActionOperator.Run(
-                outputConsumer,
                 context,
-                localDirectoryPath);
+                localDirectoryPath,
+                outputConsumer);
         }
 
         public async Task Clone_Repository(
@@ -56,8 +56,8 @@ namespace R5T.L0036.Internal
                 context.OwnerName.Value);
 
             Instances.ActionOperator.Run(
-                outputConsumer,
-                localDirectoryPath);
+                localDirectoryPath,
+                outputConsumer);
         }
 
         public async Task Create_RemoteRepository(
